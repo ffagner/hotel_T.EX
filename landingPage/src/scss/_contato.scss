@@ -106,8 +106,6 @@ section {
     }
   }
 }
-/* responsividade */
-
 ::placeholder {
   @include mx.placeholder__form;
   color: rgba(v.$azulClaro, 0.9);
