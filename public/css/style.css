@@ -850,6 +850,7 @@ input[type="date"] {
   box-shadow: 0 0 10px #00000033;
   margin-bottom: 15px;
   padding: 15px;
+  border: 5px solid transparent;
 }
 
 .img-reserva + div {
@@ -973,7 +974,8 @@ input[type="radio"]:checked + div {
   background: rgba(0, 0, 0, 0.8);
 }
 
-.modal__detalhes {
+.modal__detalhes,
+.modal__servicos {
   width: 50%;
   height: auto;
   position: relative;
@@ -982,20 +984,11 @@ input[type="radio"]:checked + div {
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   border-radius: 5px;
+  padding: 30px;
 }
 
-.box__detalhes {
-  display: flex;
-}
-
-.imagem,
-.lista__detalhes {
-  flex: 50%;
-}
-.imagem {
-  background-image: url("./../images/acomodacao1.png");
-  height: 500px;
-  border-radius: 5px 0 0 5px;
+.modal__servicos {
+  width: 40%;
 }
 
 .fechar {
@@ -1005,34 +998,43 @@ input[type="radio"]:checked + div {
   cursor: pointer;
 }
 
-.lista__detalhes {
-  display: flex;
-  flex-direction: column;
-  padding: 0 10px;
+.lista__servicos__passeio,
+.lista__servicos__lavanderia,
+.lista__servicos__cafe,
+.lista__servicos__massagem,
+.lista__servicos__cabeleireiro {
+  margin-bottom: 5px;
 }
 
-.lista__detalhes h2 {
-  padding: 20px 0;
+.add_servicos {
+  margin-top: 20px;
+  padding: 10px 30px;
+  border: none;
+  background: var(--azul-escuro);
+  color: #ffffff;
+  cursor: pointer;
 }
 
-.lista__detalhes h2 span {
+.lista__detalhes h2,
+.lista__servicos h2 {
+  margin-bottom: 20px;
+}
+
+.lista__detalhes h2 span,
+.lista__servicos h2 span {
   border-bottom: 5px solid var(--laranja);
 }
 
-.lista__detalhes__apartamento,
-.lista__detalhes__checkin,
-.lista__detalhes__checkout,
-.lista__detalhes__beneficios,
-.lista__detalhes__total {
-  padding: 10px 0;
+.lista__detalhes div {
+  margin: 5px 0;
 }
 
-.lista__detalhes__apartamento span:nth-of-type(1),
-.lista__detalhes__checkin span:nth-of-type(1),
-.lista__detalhes__checkout span:nth-of-type(1),
-.lista__detalhes__beneficios span:nth-of-type(1),
-.lista__detalhes__total span:nth-of-type(1) {
+.lista__detalhes div span:first-child {
   font-weight: bold;
+}
+
+.lista__detalhes__servicos p:nth-of-type(2) {
+  text-indent: 1rem;
 }
 
 .msg-erro {

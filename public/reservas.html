@@ -93,12 +93,12 @@
         <div class="quartos-resumo">
           <div class="todos-os-quartos-reserva">
             <!-- Quarto 1 -->
-            <div class="quarto-box display-f flex-dc box-1">
+            <div class="quarto-box display-f flex-dc">
               <div class="quarto-reserva display-f">
                 <div class="img-reserva">
                   <img src="images/reserva1.png" alt="Imagem" />
                 </div>
-                <div>
+                <div class="">
                   <div class="cada-quarto-reserva">
                     <h3>QUARTO EXECUTIVO</h3>
                     <p>
@@ -107,23 +107,22 @@
                       escrivaninha e banheiro privativo.
                     </p>
                   </div>
-
                   <div class="text-valor-reserva">R$500,00</div>
                   <div>
-                    <input
-                      type="radio"
-                      name="reservar-quarto"
-                      id="reservar-quarto1"
-                      class="reservar"
-                    />
-                    <label for="reservar-quarto1">Selecionar Quarto</label>
+                    <div>
+                      <input
+                        type="radio"
+                        name="reservar-quarto"
+                        id="reservar-quarto1"
+                        class="reservar"
+                      />
+                      <label for="reservar-quarto1">Selecionar Quarto</label>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Quarto 2 -->
-            <div class="quarto-box display-f flex-dc box-2">
+              <!-- Quarto 2 -->
               <div class="quarto-reserva display-f">
                 <div class="img-reserva">
                   <img src="images/reserva2.png" alt="Imagem" />
@@ -151,10 +150,8 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Quarto 3 -->
-            <div class="quarto-box display-f flex-dc box-3">
+              <!-- Quarto 3 -->
               <div class="quarto-reserva display-f">
                 <div class="img-reserva">
                   <img src="images/reserva3.png" alt="Imagem" />
@@ -200,14 +197,17 @@
                   </div>
                 </ul>
               </div>
-              <button id="adicionar_servicos" type="button">
+              <button id="btn_servicos" type="button">
                 Adicionar mais serviços
               </button>
               <div>
-                <p>Valor total: R$ <span></span></p>
+                <p>Valor total: <span id="total_reserva"></span></p>
               </div>
-              <button id="confirmar" class="display-f" id="confirmar">
+              <button id="btn_confirmar" type="button" class="display-f">
                 Confirmar reserva
+              </button>
+              <button id="btn_detalhes" type="button" class="display-f">
+                Detalhes da Reserva
               </button>
               <div id="msg-erro" class="hidden"></div>
             </div>
@@ -275,9 +275,65 @@
     </footer>
 
     <section class="modal__overlay hidden" id="modal__overlay">
+      <!-- Serviços -->
+      <div class="modal__servicos box__servicos hidden" id="modal__servicos">
+        <div class="imagem">
+          <i
+            class="fa-sharp fa-solid fa-xmark fechar"
+            id="fechar__servicos"
+          ></i>
+        </div>
+        <div class="lista__servicos">
+          <h2 class="lista__servicos__titulo">
+            <span>Escolha os Serviços Adicionais</span>
+          </h2>
+          <div class="lista__servicos__passeio">
+            <input type="checkbox" name="passeio" id="passeio" value="100" />
+            <label for="passeio"
+              >Passeio de Barco: <strong>R$ 100,00</strong></label
+            >
+          </div>
+          <div class="lista__servicos__lavanderia">
+            <input
+              type="checkbox"
+              name="lavanderia"
+              id="lavanderia"
+              value="100"
+            />
+            <label for="lavanderia">Lavanderia: <strong>R$ 100</strong></label>
+          </div>
+          <div class="lista__servicos__cafe">
+            <input type="checkbox" name="cafe" id="cafe" value="70" />
+            <label for="cafe">Café da Manhã: <strong>R$ 70</strong></label>
+          </div>
+          <div class="lista__servicos__massagem">
+            <input type="checkbox" name="massagem" id="massagem" value="50" />
+            <label for="massagem">Massagem: <strong>R$ 50</strong></label>
+          </div>
+          <div class="lista__servicos__cabeleireiro">
+            <input
+              type="checkbox"
+              name="cabeleireiro"
+              id="cabeleireiro"
+              value="100"
+            />
+            <label for="cabeleireiro"
+              >Cabeleireiro(a): <strong>R$ 100</strong></label
+            >
+          </div>
+          <button id="btn_add_servicos" class="add_servicos">
+            Adicionar Serviços
+          </button>
+        </div>
+      </div>
+
+      <!-- Detalhes -->
       <div class="modal__detalhes box__detalhes hidden" id="modal__detalhes">
         <div class="imagem">
-          <i class="fa-sharp fa-solid fa-xmark fechar" id="fechar"></i>
+          <i
+            class="fa-sharp fa-solid fa-xmark fechar"
+            id="fechar__detalhes"
+          ></i>
         </div>
         <div class="lista__detalhes">
           <h2 class="lista__detalhes__titulo">
@@ -285,24 +341,39 @@
           </h2>
           <div class="lista__detalhes__apartamento">
             <span>Apartamento:</span>
-            <span>Quarto Executivo</span>
+            <span id="vApartamento"></span>
+          </div>
+          <div class="lista__detalhes__preco">
+            <span>Diária:</span>
+            <span id="vPreco"></span>
           </div>
           <div class="lista__detalhes__checkin">
             <span>Check-in:</span>
-            <span>16/01/2023</span>
+            <span id="vCheckin"></span>
           </div>
           <div class="lista__detalhes__checkout">
             <span>Check-out:</span>
-            <span>18/01/2023</span>
+            <span id="vCheckout"></span>
           </div>
-          <div class="lista__detalhes__beneficios">
-            <span>Benefícios:</span>
-            <span>Vários</span>
+          <div class="lista__detalhes__adultos">
+            <span>Adultos:</span>
+            <span id="vAdultos"></span>
+          </div>
+          <div class="lista__detalhes__noites">
+            <span>Noites:</span>
+            <span id="vNoites"></span>
+          </div>
+          <div class="lista__detalhes__servicos">
+            <span>Serviços:</span>
+            <span id="vServicos"></span>
           </div>
           <div class="lista__detalhes__total">
             <span>Total:</span>
-            <span>R$ 150,00</span>
+            <span id="vTotal"></span>
           </div>
+          <button id="btn_f_detalhes" class="add_servicos">
+            Fechar Detalhes
+          </button>
         </div>
       </div>
     </section>
