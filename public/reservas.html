@@ -93,18 +93,7 @@
         <div class="quartos-resumo">
           <div class="todos-os-quartos-reserva">
             <!-- Quarto 1 -->
-            <div class="quarto-box display-f flex-dc">
-              <label for="reservar-quarto1"
-                ><i class="fa-solid fa-circle-check"></i> Selecionar
-                Quarto</label
-              >
-              <input
-                type="radio"
-                name="reservar-quarto"
-                id="reservar-quarto1"
-                class="reservar"
-              />
-
+            <div class="quarto-box display-f flex-dc box-1">
               <div class="quarto-reserva display-f">
                 <div class="img-reserva">
                   <img src="images/reserva1.png" alt="Imagem" />
@@ -118,23 +107,23 @@
                       escrivaninha e banheiro privativo.
                     </p>
                   </div>
+
                   <div class="text-valor-reserva">R$500,00</div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="reservar-quarto"
+                      id="reservar-quarto1"
+                      class="reservar"
+                    />
+                    <label for="reservar-quarto1">Selecionar Quarto</label>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- Quarto 2 -->
-            <div class="quarto-box display-f flex-dc">
-              <label for="reservar-quarto2"
-                ><i class="fa-solid fa-circle-check"></i> Selecionar
-                Quarto</label
-              >
-              <input
-                type="radio"
-                name="reservar-quarto"
-                id="reservar-quarto2"
-                class="reservar"
-              />
+            <div class="quarto-box display-f flex-dc box-2">
               <div class="quarto-reserva display-f">
                 <div class="img-reserva">
                   <img src="images/reserva2.png" alt="Imagem" />
@@ -149,22 +138,23 @@
                     </p>
                   </div>
                   <div class="text-valor-reserva">R$500,00</div>
+                  <div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="reservar-quarto"
+                        id="reservar-quarto2"
+                        class="reservar"
+                      />
+                      <label for="reservar-quarto2">Selecionar Quarto</label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- Quarto 3 -->
-            <div class="quarto-box display-f flex-dc">
-              <label for="reservar-quarto3"
-                ><i class="fa-solid fa-circle-check"></i> Selecionar
-                Quarto</label
-              >
-              <input
-                type="radio"
-                name="reservar-quarto"
-                id="reservar-quarto3"
-                class="reservar"
-              />
+            <div class="quarto-box display-f flex-dc box-3">
               <div class="quarto-reserva display-f">
                 <div class="img-reserva">
                   <img src="images/reserva3.png" alt="Imagem" />
@@ -179,6 +169,17 @@
                     </p>
                   </div>
                   <div class="text-valor-reserva">R$500,00</div>
+                  <div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="reservar-quarto"
+                        id="reservar-quarto3"
+                        class="reservar"
+                      />
+                      <label for="reservar-quarto3">Selecionar Quarto</label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -190,20 +191,25 @@
               <div class="resumo-box">
                 <ul>
                   <div>
-                    <li>Apartamento: <span>xxx</span></li>
-                    <li>Nº de pessoas: <span>xxx</span></li>
+                    <li>Acomodação: <span id="acomodacao"></span></li>
+                    <li>Nº de pessoas: <span id="n_adultos"></span></li>
                   </div>
                   <div>
-                    <li>Check-in: <span>xxx</span></li>
-                    <li>Check-out: <span>xxx</span></li>
+                    <li>Check-in: <span id="d_check_in"></span></li>
+                    <li>Check-out: <span id="d_check_out"></span></li>
                   </div>
                 </ul>
               </div>
-              <a href="#">Adicionar mais serviços</a>
+              <button id="adicionar_servicos" type="button">
+                Adicionar mais serviços
+              </button>
               <div>
-                <p>Valor total: R$ <span>XXX</span></p>
+                <p>Valor total: R$ <span></span></p>
               </div>
-              <button class="display-f">Confirmar reserva</button>
+              <button id="confirmar" class="display-f" id="confirmar">
+                Confirmar reserva
+              </button>
+              <div id="msg-erro" class="hidden"></div>
             </div>
           </aside>
         </div>
@@ -267,5 +273,40 @@
         </div>
       </div>
     </footer>
+
+    <section class="modal__overlay hidden" id="modal__overlay">
+      <div class="modal__detalhes box__detalhes hidden" id="modal__detalhes">
+        <div class="imagem">
+          <i class="fa-sharp fa-solid fa-xmark fechar" id="fechar"></i>
+        </div>
+        <div class="lista__detalhes">
+          <h2 class="lista__detalhes__titulo">
+            <span>Resumo da Reserva</span>
+          </h2>
+          <div class="lista__detalhes__apartamento">
+            <span>Apartamento:</span>
+            <span>Quarto Executivo</span>
+          </div>
+          <div class="lista__detalhes__checkin">
+            <span>Check-in:</span>
+            <span>16/01/2023</span>
+          </div>
+          <div class="lista__detalhes__checkout">
+            <span>Check-out:</span>
+            <span>18/01/2023</span>
+          </div>
+          <div class="lista__detalhes__beneficios">
+            <span>Benefícios:</span>
+            <span>Vários</span>
+          </div>
+          <div class="lista__detalhes__total">
+            <span>Total:</span>
+            <span>R$ 150,00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./js/script.js"></script>
   </body>
 </html>

@@ -40,6 +40,8 @@ function trocarBanner() {
 
   // Alterar o banner e o texto
   banner.style.backgroundImage = "url(" + findBanner.images + ")";
+  banner.style.backgroundColor =
+    "linear-gradient(0deg, rgba(6, 63, 87, 1), rgba(6, 63, 87, 0.3))";
   texto.textContent = findBanner.text;
 }
 
